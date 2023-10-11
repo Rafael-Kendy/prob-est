@@ -78,6 +78,7 @@ poisson(260, 240)
             #menor ou igual a ele
 # rMODELO = amostra aleatoria do modelo
 
+#binominal-----------------------------
 #2 vezes do dado dar <3 em 5 tentativas
 dbinom(2,5,2/6)
 
@@ -99,3 +100,48 @@ qbinom(0.7901,5,2/6)
 #amostra de tamanho 10
 rbinom(10,5,2/6)
 
+#poisson-------------------------------
+#processa em media 40 itens por segundo
+#35 itens
+dpois(35,40)
+
+#todas
+dpois(0:500,40)
+bd=data.frame(10:70, dpois(10:70,40))
+names(bd)=c('x', 'prob')
+bd
+ggplot(bd, aes(x,prob))+geom_col(fill='orange')
+
+install.packages('labeling')
+library(labeling)
+
+#45 ou menos
+ppois(45,40)
+
+#A para 0.8096
+qpois(0.8096,40)
+
+#amostra 10
+rpois(10,40)
+
+#CONTINUO----------------------------------------------------------------------
+#exponencial----------------------------
+#tempo de validade media de 7 anos
+#vencer em 6 anos
+dexp(6,1/7)
+#calcula, mas é 0 pq continuo ñ tem em ponto exato
+
+#5 ou menos
+pexp(5,1/7)
+
+#valor mediano
+qexp(0.5,1/7)
+
+#amostra 10
+rexp(10,1/7)
+
+x=rexp(500,1/7)
+dx=dexp(x,1/7)
+bd=data.frame(x,dx)
+ggplot(bd, aes(x))+geom_histogram(aes(y=..density..))+
+  geom_line(aes(x,dx,col='red'))
