@@ -48,6 +48,8 @@ t.test(bd5$temperaturaB, conf.level=0.06)
 #B é mais resistente
 (var=c(rep('a',60),rep('b',60)))
 (plotbd=data.frame(var=var, res=c(bd5$temperaturaA,bd5$temperaturaB)))
+#ou
+as.data.frame(rbind(cbind(bd5$temperaturaA, 'a'), cbind(bd5$temperaturaB, 'b')))
 ggplot(plotbd, aes(x=var, y=res, fill=var))+geom_boxplot()
        
        
