@@ -52,3 +52,7 @@ sum(diag(table(predict(m, newdata=test), test$Species)))/length(test$Species)
 
 importance(m)
 varImpPlot(m, sort=T, main="Importance")
+
+head(iris)
+bd=data.frame(Sepal.Length=4.8,  Sepal.Width=3, Petal.Length=1.5, Petal.Width=0.3)
+predict(m,newdata = bd)
